@@ -2900,14 +2900,14 @@
     "resetDay": "Monday"
   },
   "goonSpawnSystem": {
-	  "enabled": true,
-	  "locationPool": [
-		"bigmap",
-		"woods",
-		"shoreline",
-		"lighthouse"
-	  ],
-	  "spawnChance": 35
+    "enabled": true,
+    "locationPool": [
+      "bigmap",
+      "woods",
+      "shoreline",
+      "lighthouse"
+    ],
+    "spawnChance": 35
   },
   "replaceScavWith": "assault"
 }
