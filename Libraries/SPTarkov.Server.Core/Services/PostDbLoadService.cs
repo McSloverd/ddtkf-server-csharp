@@ -216,7 +216,7 @@ public class PostDbLoadService(
 
         // Create a consistent seed for the week using the year and the day of the year of above monday chosen
         // This results in seed being identical for the week
-        var seed = startOfWeek.Year * 1000 + startOfWeek.DayOfYear;
+        var seed = startOfWeek.Year * 1009 + startOfWeek.DayOfYear;
 
         // Init Random class with unique seed
         var random = new Random(seed);
