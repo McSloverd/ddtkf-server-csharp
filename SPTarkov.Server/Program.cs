@@ -42,6 +42,23 @@ public static class Program
         }
         catch (Exception e)
         {
+            if (e.Message.Contains("could not load file or assembly", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var requirementName = e.Message;
+                Console.WriteLine(
+                    "========================================================================================================="
+                );
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine(
+                    "You may have forgotten to install a requirement for one of your mods, please check the mod page again and install any requirements listed. Read the error message below CAREFULLY for the name of the mod you need to install"
+                );
+                Console.ResetColor();
+                Console.WriteLine(
+                    "========================================================================================================="
+                );
+            }
+
             Console.WriteLine("=========================================================================================================");
             Console.WriteLine(
                 "The server has unexpectedly stopped, reach out to #spt-support in discord, create a support thread by following the instructions found in #support-guidelines. Also include a screenshot of this message + the below error"
