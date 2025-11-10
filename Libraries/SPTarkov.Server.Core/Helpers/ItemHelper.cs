@@ -616,8 +616,8 @@ public class ItemHelper(
         else if (item.Upd.Key?.NumberOfUsages > 0 && itemDetails.Properties?.MaximumNumberOfUsage > 0)
         {
             // keys - keys count upwards, not down like everything else
-            var maxNumOfUsages = itemDetails.Properties.MaximumNumberOfUsage;
-            result = (maxNumOfUsages ?? 0 - item.Upd.Key.NumberOfUsages) / maxNumOfUsages ?? 0;
+            double maxNumOfUsages = itemDetails.Properties.MaximumNumberOfUsage.GetValueOrDefault(0);
+            result = (maxNumOfUsages - item.Upd.Key.NumberOfUsages!.Value) / maxNumOfUsages;
         }
         else if (item.Upd.Resource?.UnitsConsumed > 0) // Item is less than 100% usage
         {
