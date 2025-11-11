@@ -651,6 +651,9 @@ public class SeasonalEventService(
                 );
                 if (matchingBaseSettings is null)
                 {
+                    // Doesn't exist, add it
+                    locationBase.Base.BotLocationModifier.AdditionalHostilitySettings.Append(settings);
+
                     continue;
                 }
 
@@ -769,6 +772,11 @@ public class SeasonalEventService(
     protected void EnableHalloweenSummonEvent()
     {
         databaseService.GetGlobals().Configuration.EventSettings.EventActive = true;
+
+        if (SeasonalEventConfig.HostilitySettingsForEvent.TryGetValue("summon", out var botData))
+        {
+            ReplaceBotHostility(botData);
+        }
     }
 
     protected void ConfigureZombies(ZombieSettings zombieSettings)

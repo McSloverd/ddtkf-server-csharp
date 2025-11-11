@@ -37,7 +37,7 @@ public class RagfairSellHelper(
 
         // Modifier gets applied twice to either penalize or incentivize over/under pricing (Probably a cleaner way to do this)
         var sellModifier = averageOfferPriceRub / playerListedPriceRub * sellConfig.SellMultiplier;
-        var sellChance = Math.Round(baseSellChancePercent * sellModifier * Math.Pow(sellModifier, 3) + 10); // Power of 3
+        var sellChance = Math.Round(baseSellChancePercent * sellModifier * (Math.Pow(sellModifier, 3) + 10)); // Power of 3
 
         // Adjust sell chance if below config value
         if (sellChance < sellConfig.MinSellChancePercent)

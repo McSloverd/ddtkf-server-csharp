@@ -6,8 +6,10 @@
 ///
 /// This should not be used at all when having direct access to DI.
 /// </summary>
+[Obsolete("This will be removed in the next version of SPT in favor of DI injecting patches")]
 public static class ServiceLocator
 {
+    [Obsolete("This will be removed in the next version of SPT in favor of DI injecting patches")]
     public static IServiceProvider ServiceProvider { get; private set; }
 
     internal static void SetServiceProvider(IServiceProvider provider)

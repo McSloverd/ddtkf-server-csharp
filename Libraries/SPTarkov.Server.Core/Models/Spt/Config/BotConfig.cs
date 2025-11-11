@@ -137,6 +137,21 @@ public record BotConfig : BaseConfig
     /// </summary>
     [JsonPropertyName("replaceScavWith")]
     public required WildSpawnType ReplaceScavWith { get; set; }
+
+    [JsonPropertyName("goonSpawnSystem")]
+    public required GoonSpawnSystem GoonSpawnSystem { get; set; }
+}
+
+public record GoonSpawnSystem
+{
+    [JsonPropertyName("enabled")]
+    public bool Enabled { get; set; }
+
+    [JsonPropertyName("locationPool")]
+    public IEnumerable<string> LocationPool { get; set; }
+
+    [JsonPropertyName("spawnChance")]
+    public double SpawnChance { get; set; }
 }
 
 public record WeeklyBossSettings

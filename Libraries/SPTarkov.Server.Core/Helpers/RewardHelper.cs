@@ -229,18 +229,7 @@ public class RewardHelper(
         // "TraderId" holds area ID that will be used to craft unlocked item
         var desiredHideoutAreaType = (HideoutAreas)int.Parse(craftUnlockReward.TraderId.ToString());
 
-        var matchingProductions = GetMatchingProductions(desiredHideoutAreaType, questId, craftUnlockReward);
-
-        // More/less than single match, above filtering wasn't strict enough
-        if (matchingProductions.Count != 1)
-        // Multiple matches were found, last ditch attempt to match by questid (value we add manually to production.json via `gen:productionquests` command)
-        {
-            matchingProductions = matchingProductions
-                .Where(prod => prod.Requirements.Any(requirement => requirement.QuestId == questId))
-                .ToList();
-        }
-
-        return matchingProductions;
+        return GetMatchingProductions(desiredHideoutAreaType, questId, craftUnlockReward);
     }
 
     /// <summary>
@@ -252,20 +241,35 @@ public class RewardHelper(
     /// <returns>Hideout crafts that match input parameters</returns>
     protected List<HideoutProduction> GetMatchingProductions(HideoutAreas desiredHideoutAreaType, MongoId questId, Reward craftUnlockReward)
     {
-        var rewardItemTpl = craftUnlockReward.Items.FirstOrDefault()?.Template;
+        var rewardItemTpl = craftUnlockReward.Items?.FirstOrDefault()?.Template;
+        if (rewardItemTpl is null)
+        {
+            logger.Warning("Unable to get matching hideout craft as reward item tpl is missing");
 
-        var craftingRecipes = databaseService.GetHideout().Production.Recipes;
-        return craftingRecipes
+            return [];
+        }
+
+        var craftingRecipesDb = databaseService.GetHideout().Production.Recipes;
+        var result = craftingRecipesDb
             .Where(production =>
-                // Some crafts have the questId, easy match
+                // Attempt to match by questId (value we add manually to production.json via `gen:productionquests` command)
                 production.Requirements.Any(req => req.QuestId == questId)
-                ||
-                // Couldn't get craft by questId, get the closest match based on information we know
+            )
+            .ToList();
+        if (result.Count == 1)
+        {
+            // One result, good match
+            return result;
+        }
+
+        // Found more than or less than 1 craft by questId, try to get closest match based on information we know
+        return craftingRecipesDb
+            .Where(production =>
                 (
-                    rewardItemTpl is not null
-                    && production.AreaType == desiredHideoutAreaType
+                    production.AreaType == desiredHideoutAreaType
                     && production.EndProduct == rewardItemTpl.Value
                     && production.Requirements.Any(req => req.Type is "QuestComplete")
+                    && production.Locked.GetValueOrDefault(false) // Craft would be locked if we're unlocking it
                     && production.Requirements.Any(req => req.RequiredLevel == craftUnlockReward.LoyaltyLevel)
                 )
             )

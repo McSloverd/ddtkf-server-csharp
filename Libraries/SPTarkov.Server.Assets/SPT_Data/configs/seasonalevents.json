@@ -1264,7 +1264,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1284,7 +1285,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1304,7 +1306,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [],
           "Supports": null,
@@ -1321,7 +1324,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [],
           "Supports": null,
@@ -1338,7 +1342,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [],
           "Supports": null,
@@ -1355,7 +1360,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1375,7 +1381,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1395,7 +1402,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1415,7 +1423,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1450,7 +1459,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1485,7 +1495,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1513,7 +1524,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1541,7 +1553,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1569,7 +1582,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1597,7 +1611,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1625,7 +1640,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1653,7 +1669,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -1902,7 +1919,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -1921,7 +1939,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -1940,7 +1959,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [],
           "Supports": null,
           "Time": 9999,
@@ -1956,7 +1976,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [],
           "Supports": null,
           "Time": 9999,
@@ -1972,7 +1993,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [],
           "Supports": null,
           "Time": 9999,
@@ -1988,7 +2010,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2007,7 +2030,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2026,7 +2050,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2045,7 +2070,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2079,7 +2105,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2113,7 +2140,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2140,7 +2168,8 @@
           "BossName": "infectedAssault",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2167,7 +2196,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2194,7 +2224,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2221,7 +2252,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2248,7 +2280,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -2275,7 +2308,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "SpawnMode": [
             "regular",
             "pve"
@@ -3262,7 +3296,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3283,7 +3318,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3304,7 +3340,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [],
           "Supports": null,
@@ -3322,7 +3359,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3343,7 +3381,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [],
           "Supports": null,
@@ -3361,7 +3400,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [],
           "Supports": null,
@@ -3379,7 +3419,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3400,7 +3441,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3421,7 +3463,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3457,7 +3500,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3500,7 +3544,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3529,7 +3574,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3558,7 +3604,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3587,7 +3634,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3616,7 +3664,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3645,7 +3694,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -3674,7 +3724,8 @@
           "BossPlayer": false,
           "BossZone": "BotZoneFloor1,BotZoneFloor2,BotZoneBasement",
           "Delay": 0,
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5590,7 +5641,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5610,7 +5662,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5630,7 +5683,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5650,7 +5704,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5670,7 +5725,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5690,7 +5746,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5710,7 +5767,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5730,7 +5788,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5750,7 +5809,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5792,7 +5852,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5834,7 +5895,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5869,7 +5931,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5904,7 +5967,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5939,7 +6003,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -5974,7 +6039,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6009,7 +6075,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6044,7 +6111,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6281,7 +6349,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6301,7 +6370,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6321,7 +6391,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6341,7 +6412,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6361,7 +6433,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6381,7 +6454,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6401,7 +6475,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6421,7 +6496,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6441,7 +6517,8 @@
           "BossName": "infectedCivil",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6483,7 +6560,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6525,7 +6603,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6560,7 +6639,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6595,7 +6675,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6630,7 +6711,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6665,7 +6747,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6700,7 +6783,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -6735,7 +6819,8 @@
           "BossName": "infectedPmc",
           "BossPlayer": false,
           "BossZone": "",
-          "IgnoreMaxBots": false,
+          "ForceSpawn": true,
+          "IgnoreMaxBots": true,
           "RandomTimeSpawn": false,
           "SpawnMode": [
             "regular",
@@ -9807,7 +9892,7 @@
       "endMonth": "11",
       "name": "halloween",
       "settings": {
-        "enableSummoning": false,
+        "enableSummoning": true,
         "removeEntryRequirement": [
           "laboratory"
         ],
@@ -9817,7 +9902,7 @@
             "laboratory"
           ],
           "disableWaves": [],
-          "enabled": true,
+          "enabled": false,
           "mapInfectionAmount": {
             "Sandbox": 25,
             "factory4": 50,
@@ -13892,6 +13977,22 @@
           "BotRole": "infectedTagilla",
           "SavagePlayerBehaviour": "AlwaysEnemies",
           "UsecPlayerBehaviour": "AlwaysEnemies"
+        }
+      ]
+    },
+    "summon": {
+      "default": [
+        {
+          "AlwaysEnemies": [],
+          "AlwaysFriends": [],
+          "BearPlayerBehaviour": "AlwaysFriends",
+          "BotRole": "peacefullZryachiyEvent",
+          "ChancedEnemies": [],
+          "SavageEnemyChance": 0,
+          "BearEnemyChance": 0,
+          "UsecEnemyChance": 0,
+          "SavagePlayerBehaviour": "AlwaysFriends",
+          "UsecPlayerBehaviour": "AlwaysFriends"
         }
       ]
     }

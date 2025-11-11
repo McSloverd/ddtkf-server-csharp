@@ -537,6 +537,7 @@ public class ItemHelper(
     {
         if (IsOfBaseclass(itemWithChildren.First().Template, BaseClasses.WEAPON))
         {
+            // Only root of weapon has durability
             return Math.Round(GetItemQualityModifier(itemWithChildren.First()), 5);
         }
 
@@ -594,42 +595,44 @@ public class ItemHelper(
             return -1;
         }
 
-        if (item.Upd is not null)
+        if (item.Upd is null)
         {
-            if (item.Upd.MedKit is not null)
-            {
-                // Meds
-                result = (item.Upd.MedKit.HpResource ?? 0) / (itemDetails.Properties?.MaxHpResource ?? 0);
-            }
-            else if (item.Upd.Repairable is not null)
-            {
-                result = GetRepairableItemQualityValue(itemDetails, item.Upd.Repairable, item);
-            }
-            else if (item.Upd.FoodDrink is not null)
-            {
-                result = (item.Upd.FoodDrink.HpPercent ?? 0) / (itemDetails.Properties?.MaxResource ?? 0);
-            }
-            else if (item.Upd.Key?.NumberOfUsages > 0 && itemDetails.Properties?.MaximumNumberOfUsage > 0)
-            {
-                // keys - keys count upwards, not down like everything else
-                var maxNumOfUsages = itemDetails.Properties.MaximumNumberOfUsage;
-                result = (maxNumOfUsages ?? 0 - item.Upd.Key.NumberOfUsages) / maxNumOfUsages ?? 0;
-            }
-            else if (item.Upd.Resource?.UnitsConsumed > 0)
-            {
-                // E.g. fuel tank
-                result = (item.Upd.Resource.Value ?? 0) / (itemDetails.Properties?.MaxResource ?? 0);
-            }
-            else if (item.Upd.RepairKit is not null)
-            {
-                result = (item.Upd.RepairKit.Resource ?? 0) / (itemDetails.Properties?.MaxRepairResource ?? 0);
-            }
+            return result;
+        }
 
-            if (result == 0)
-            // make item non-zero but still very low
-            {
-                result = 0.01;
-            }
+        if (item.Upd.MedKit is not null)
+        {
+            // Meds
+            result = (item.Upd.MedKit.HpResource ?? 0) / (itemDetails.Properties?.MaxHpResource ?? 0);
+        }
+        else if (item.Upd.Repairable is not null)
+        {
+            result = GetRepairableItemQualityValue(itemDetails, item.Upd.Repairable, item);
+        }
+        else if (item.Upd.FoodDrink is not null)
+        {
+            result = (item.Upd.FoodDrink.HpPercent ?? 0) / (itemDetails.Properties?.MaxResource ?? 0);
+        }
+        else if (item.Upd.Key?.NumberOfUsages > 0 && itemDetails.Properties?.MaximumNumberOfUsage > 0)
+        {
+            // keys - keys count upwards, not down like everything else
+            var maxNumOfUsages = itemDetails.Properties.MaximumNumberOfUsage;
+            result = (maxNumOfUsages ?? 0 - item.Upd.Key.NumberOfUsages) / maxNumOfUsages ?? 0;
+        }
+        else if (item.Upd.Resource?.UnitsConsumed > 0) // Item is less than 100% usage
+        {
+            // E.g. fuel tank
+            result = (item.Upd.Resource.Value ?? 0) / (itemDetails.Properties?.MaxResource ?? 0);
+        }
+        else if (item.Upd.RepairKit is not null)
+        {
+            result = (item.Upd.RepairKit.Resource ?? 0) / (itemDetails.Properties?.MaxRepairResource ?? 0);
+        }
+
+        if (result == 0)
+        // make item non-zero but still very low
+        {
+            result = 0.01;
         }
 
         return result;

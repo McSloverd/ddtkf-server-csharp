@@ -588,7 +588,21 @@ public class RagfairOfferGenerator(
             }
 
             var barterSchemeItems = barterScheme[0];
-            var loyalLevel = assortsClone.LoyalLevelItems[item.Id];
+            if (!assortsClone.LoyalLevelItems.TryGetValue(item.Id, out var loyalLevel))
+            {
+                logger.Warning(
+                    localisationService.GetText(
+                        "ragfair-missing_loyal_level_item",
+                        new
+                        {
+                            itemId = item.Id,
+                            tpl = item.Template,
+                            name = trader.Base.Nickname,
+                        }
+                    )
+                );
+                continue;
+            }
 
             var createOfferDetails = new CreateFleaOfferDetails
             {
@@ -742,7 +756,10 @@ public class RagfairOfferGenerator(
         if (itemHelper.IsOfBaseclass(itemDetails.Id, BaseClasses.FUEL))
         {
             var totalCapacity = itemDetails.Properties.MaxResource;
-            var remainingFuel = Math.Round((double)totalCapacity * maxMultiplier);
+
+            // Randomise multi between value in config and 1 (100%)
+            var randomisedMulti = randomUtil.GetDouble(maxMultiplier, 1);
+            var remainingFuel = Math.Round((double)totalCapacity * randomisedMulti);
             rootItem.Upd.Resource = new UpdResource { UnitsConsumed = totalCapacity - remainingFuel, Value = remainingFuel };
         }
     }

@@ -531,15 +531,17 @@ public class RagfairPriceService(
     /// </summary>
     /// <param name="weaponWithChildren">weapon plus mods</param>
     /// <returns>price of weapon in roubles</returns>
-    protected double GetPresetPriceByChildren(IEnumerable<Item> weaponWithChildren)
+    public double GetPresetPriceByChildren(IEnumerable<Item> weaponWithChildren)
     {
         var priceTotal = 0d;
         foreach (var item in weaponWithChildren)
         {
             // Root item uses static price
-            if (item.ParentId == null)
+            if (item.ParentId == null || string.Equals(item.ParentId, "hideout", StringComparison.OrdinalIgnoreCase))
             {
                 priceTotal += GetStaticPriceForItem(item.Template) ?? 0;
+
+                continue;
             }
 
             priceTotal += GetFleaPriceForItem(item.Template);

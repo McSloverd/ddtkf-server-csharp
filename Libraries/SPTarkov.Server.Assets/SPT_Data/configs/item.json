@@ -61,7 +61,8 @@
     "679baa2c61f588ae2b062a24",
     "679baa4f59b8961f370dd683",
     "679baa5a59b8961f370dd685",
-    "679baa9091966fe40408f149"
+    "679baa9091966fe40408f149",
+    "67ab3d4b83869afd170fdd3f"
   ],
   "bossItems": [
     "6275303a9f372d6ea97f9ec7",
@@ -474,6 +475,74 @@
       ],
       "_name": "FN SCAR-H X-17 762x51 default",
       "_parent": "679f5f42ca975ceee4001927",
+      "_type": "Preset"
+    },
+    {
+      "_changeWeaponName": false,
+      "_encyclopedia": "67d0576f29f580ebc10efd08",
+      "_id": "690a065b64b2a3bab0a986da",
+      "_items": [
+        {
+          "_id": "690a06bc6c65be6d001b4cd1",
+          "_tpl": "67d0576f29f580ebc10efd08",
+          "upd": {
+            "Repairable": {
+              "Durability": 100,
+              "MaxDurability": 100
+            }
+          }
+        },
+        {
+          "_id": "690a06bc6c65be6d001b4d0a",
+          "_tpl": "67d4178bffb910d21f04720a",
+          "parentId": "690a06bc6c65be6d001b4cd1",
+          "slotId": "mod_barrel"
+        },
+        {
+          "_id": "690a06bc6c65be6d001b4d18",
+          "_tpl": "67d417c023ec241bb70d4896",
+          "parentId": "690a06bc6c65be6d001b4d0a",
+          "slotId": "mod_gas_block"
+        },
+        {
+          "_id": "690a06bc6c65be6d001b4d32",
+          "_tpl": "67d41883f378a36c4706eeb7",
+          "parentId": "690a06bc6c65be6d001b4d0a",
+          "slotId": "mod_muzzle"
+        },
+        {
+          "_id": "690a06bc6c65be6d001b4d3b",
+          "_tpl": "67d416e19bd76ef20f0e743b",
+          "parentId": "690a06bc6c65be6d001b4cd1",
+          "slotId": "mod_reciever"
+        },
+        {
+          "_id": "690a06bc6c65be6d001b4d43",
+          "_tpl": "5aa66a9be5b5b0214e506e89",
+          "parentId": "690a06bc6c65be6d001b4d3b",
+          "slotId": "mod_scope"
+        },
+        {
+          "_id": "690a06bc6c65be6d001b4d4b",
+          "_tpl": "5aa66be6e5b5b0214e506e97",
+          "parentId": "690a06bc6c65be6d001b4d43",
+          "slotId": "mod_scope"
+        },
+        {
+          "_id": "690a06bc6c65be6d001b4d5c",
+          "_tpl": "6087e663132d4d12c81fd96b",
+          "parentId": "690a06bc6c65be6d001b4cd1",
+          "slotId": "mod_pistol_grip"
+        },
+        {
+          "_id": "690a06bc6c65be6d001b4d65",
+          "_tpl": "67d418d0ffb910d21f04720e",
+          "parentId": "690a06bc6c65be6d001b4cd1",
+          "slotId": "mod_magazine"
+        }
+      ],
+      "_name": "AK-50 .50 BMG sniper rifle default",
+      "_parent": "690a06bc6c65be6d001b4cd1",
       "_type": "Preset"
     }
   ],

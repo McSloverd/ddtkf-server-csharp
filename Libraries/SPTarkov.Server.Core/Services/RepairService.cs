@@ -29,6 +29,7 @@ public class RepairService(
     PaymentService paymentService,
     ProfileHelper profileHelper,
     RepairHelper repairHelper,
+    InventoryHelper inventoryHelper,
     ServerLocalisationService serverLocalisationService,
     ConfigServer configServer,
     WeightedRandomHelper weightedRandomHelper
@@ -49,14 +50,16 @@ public class RepairService(
         var itemToRepair = pmcData.Inventory.Items.FirstOrDefault(item => item.Id == repairItemDetails.Id);
         if (itemToRepair is null)
         {
-            logger.Error(serverLocalisationService.GetText("repair-unable_to_find_item_in_inventory_cant_repair", repairItemDetails.Id));
+            logger.Error(
+                serverLocalisationService.GetText("repair-unable_to_find_item_in_inventory_cant_repair", repairItemDetails.Id.ToString())
+            );
         }
 
         var priceCoef = traderHelper.GetLoyaltyLevel(traderId, pmcData).RepairPriceCoefficient;
         var traderRepairDetails = traderHelper.GetTrader(traderId, sessionID)?.Repair;
         if (traderRepairDetails is null)
         {
-            logger.Error(serverLocalisationService.GetText("repair-unable_to_find_trader_details_by_id", traderId));
+            logger.Error(serverLocalisationService.GetText("repair-unable_to_find_trader_details_by_id", traderId.ToString()));
         }
 
         var repairQualityMultiplier = traderRepairDetails.Quality;
@@ -80,7 +83,7 @@ public class RepairService(
         var itemRepairCost = items[itemToRepair.Template].Properties.RepairCost;
         if (itemRepairCost is null)
         {
-            logger.Error(serverLocalisationService.GetText("repair-unable_to_find_item_repair_cost", itemToRepair.Template));
+            logger.Error(serverLocalisationService.GetText("repair-unable_to_find_item_repair_cost", itemToRepair.Template.ToString()));
         }
 
         var repairCost = Math.Round(itemRepairCost.Value * repairItemDetails.Count.Value * repairRate.Value * RepairConfig.PriceMultiplier);
@@ -166,7 +169,9 @@ public class RepairService(
             if (!itemDetails.Key)
             {
                 // No item found
-                logger.Error(serverLocalisationService.GetText("repair-unable_to_find_item_in_db", repairDetails.RepairedItem.Template));
+                logger.Error(
+                    serverLocalisationService.GetText("repair-unable_to_find_item_in_db", repairDetails.RepairedItem.Template.ToString())
+                );
 
                 return;
             }
@@ -175,7 +180,9 @@ public class RepairService(
             var vestSkillToLevel = isHeavyArmor ? SkillTypes.HeavyVests : SkillTypes.LightVests;
             if (repairDetails.RepairPoints is null)
             {
-                logger.Error(serverLocalisationService.GetText("repair-item_has_no_repair_points", repairDetails.RepairedItem.Template));
+                logger.Error(
+                    serverLocalisationService.GetText("repair-item_has_no_repair_points", repairDetails.RepairedItem.Template.ToString())
+                );
             }
 
             var pointsToAddToVestSkill = repairDetails.RepairPoints * RepairConfig.ArmorKitSkillPointGainPerRepairPointMultiplier;
@@ -205,7 +212,9 @@ public class RepairService(
             // Limit gain to a max value defined in config.maxIntellectGainPerRepair
             if (repairDetails.RepairPoints is null)
             {
-                logger.Error(serverLocalisationService.GetText("repair-item_has_no_repair_points", repairDetails.RepairedItem.Template));
+                logger.Error(
+                    serverLocalisationService.GetText("repair-item_has_no_repair_points", repairDetails.RepairedItem.Template.ToString())
+                );
             }
 
             return Math.Min(repairDetails.RepairPoints.Value * intRepairMultiplier, RepairConfig.MaxIntellectGainPerRepair.Kit);
@@ -272,43 +281,61 @@ public class RepairService(
         var itemToRepair = pmcData.Inventory.Items.FirstOrDefault(x => x.Id == itemToRepairId);
         if (itemToRepair is null)
         {
-            logger.Error(serverLocalisationService.GetText("repair-item_not_found_unable_to_repair", itemToRepairId));
+            logger.Error(serverLocalisationService.GetText("repair-item_not_found_unable_to_repair", itemToRepairId.ToString()));
         }
 
         var itemsDb = databaseService.GetItems();
         var itemToRepairDetails = itemsDb[itemToRepair.Template];
         var repairItemIsArmor = itemToRepairDetails.Properties.ArmorMaterial is not null;
-        var repairAmount = repairKits[0].Count / GetKitDivisor(itemToRepairDetails, repairItemIsArmor, pmcData);
-        var shouldApplyDurabilityLoss = ShouldRepairKitApplyDurabilityLoss(pmcData, RepairConfig.ApplyRandomizeDurabilityLoss);
+
+        // Amount to add to gun as durability
+        var repairAmountTotal = repairKits[0].Count / GetKitDivisor(itemToRepairDetails, repairItemIsArmor, pmcData);
 
         repairHelper.UpdateItemDurability(
             itemToRepair,
             itemToRepairDetails,
             repairItemIsArmor,
-            repairAmount.Value,
+            repairAmountTotal.Value,
             true,
             1,
-            shouldApplyDurabilityLoss
+            ShouldRepairKitApplyDurabilityLoss(pmcData, RepairConfig.ApplyRandomizeDurabilityLoss)
         );
 
         // Find and use repair kit defined in body
+        List<MongoId> kitIdsToDelete = [];
         foreach (var repairKit in repairKits)
         {
             var repairKitInInventory = pmcData.Inventory.Items.FirstOrDefault(item => item.Id == repairKit.Id);
             if (repairKitInInventory is null)
             {
-                logger.Error(serverLocalisationService.GetText("repair-repair_kit_not_found_in_inventory", repairKit.Id));
+                logger.Error(serverLocalisationService.GetText("repair-repair_kit_not_found_in_inventory", repairKit.Id.ToString()));
             }
 
-            var repairKitDetails = itemsDb[repairKitInInventory.Template];
-            var repairKitReductionAmount = repairKit.Count;
+            var repairKitDbDetails = itemsDb[repairKitInInventory.Template];
+            AddMaxResourceToKitIfMissing(repairKitDbDetails, repairKitInInventory);
 
-            AddMaxResourceToKitIfMissing(repairKitDetails, repairKitInInventory);
+            if (repairKitInInventory.Upd.RepairKit.Resource <= repairKit.Count)
+            {
+                // Repair kit will be fully used up
+                // Flag kit for deletion
+                kitIdsToDelete.Add(repairKit.Id);
 
-            // reduce usages on repairkit used
-            repairKitInInventory.Upd.RepairKit.Resource -= repairKitReductionAmount;
+                // Move on to next repair kit
+                continue;
+            }
+
+            // Repair kit had enough resources to repair in one go
+            // Update server item resource value
+            repairKitInInventory.Upd.RepairKit.Resource -= repairKit.Count;
 
             output.ProfileChanges[sessionId].Items.ChangedItems.Add(repairKitInInventory);
+
+            break;
+        }
+
+        foreach (var kitId in kitIdsToDelete)
+        {
+            inventoryHelper.RemoveItem(pmcData, kitId, sessionId, output);
         }
 
         return new RepairDetails
@@ -316,7 +343,7 @@ public class RepairService(
             RepairPoints = repairKits[0].Count,
             RepairedItem = itemToRepair,
             RepairedItemIsArmor = repairItemIsArmor,
-            RepairAmount = repairAmount,
+            RepairAmount = repairAmountTotal,
             RepairedByKit = true,
         };
     }
@@ -348,7 +375,7 @@ public class RepairService(
             var destructability = 1 + armorMaterial.Destructibility;
             var armorClass = itemToRepairDetails.Properties.ArmorClass.Value;
             var armorClassDivisor = globals.Configuration.RepairSettings.ArmorClassDivisor;
-            var armorClassMultiplier = 1.0 + armorClass / armorClassDivisor;
+            var armorClassMultiplier = 1.0 + (armorClass / armorClassDivisor);
 
             return durabilityPointCostArmor * armorBonus * destructability * armorClassMultiplier;
         }
@@ -414,7 +441,7 @@ public class RepairService(
         {
             if (logger.IsLogEnabled(LogLevel.Debug))
             {
-                logger.Debug($"Repair kit: {repairKitInInventory.Id} in inventory lacks upd object, adding");
+                logger.Debug($"Repair kit: {repairKitInInventory.Id.ToString()} in inventory lacks upd object, adding");
             }
 
             repairKitInInventory.Upd = new Upd { RepairKit = new UpdRepairKit { Resource = maxRepairAmount } };
@@ -550,7 +577,9 @@ public class RepairService(
 
         if (repairDetails.RepairPoints is null)
         {
-            logger.Error(serverLocalisationService.GetText("repair-item_has_no_repair_points", repairDetails.RepairedItem.Template));
+            logger.Error(
+                serverLocalisationService.GetText("repair-item_has_no_repair_points", repairDetails.RepairedItem.Template.ToString())
+            );
         }
 
         var durabilityToRestorePercent = repairDetails.RepairPoints / template.Properties.MaxDurability;

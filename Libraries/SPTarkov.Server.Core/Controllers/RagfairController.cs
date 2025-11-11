@@ -772,23 +772,33 @@ public class RagfairController(
         var offerRootItem = offer.Items.FirstOrDefault(x => x.Id == offerRequest.Items[0]);
 
         // Get average of items quality+children
-        var qualityMultiplier = itemHelper.GetItemQualityModifierForItems(offer.Items, true);
+        var qualityMiltiplierForPlayerOffer = itemHelper.GetItemQualityModifierForItems(offer.Items, true);
 
-        // Check for and apply item price modifer if it exists in config
-        if (RagfairConfig.Dynamic.ItemPriceMultiplier.TryGetValue(offerRootItem.Template, out var itemPriceModifer))
+        // Player may be listing a custom weapon with non-standard mods, calculate the average price of the listed weapons' mods
+        if (itemHelper.IsOfBaseclass(offerRootItem.Template, BaseClasses.WEAPON))
         {
-            averageOfferPriceSingleItem *= itemPriceModifer;
+            averageOfferPriceSingleItem = ragfairPriceService.GetPresetPriceByChildren(offer.Items);
+        }
+        else
+        {
+            // Check for and apply item price modifer if it exists in config
+            if (RagfairConfig.Dynamic.ItemPriceMultiplier.TryGetValue(offerRootItem.Template, out var itemPriceModifer))
+            {
+                averageOfferPriceSingleItem *= itemPriceModifer;
+            }
         }
 
         // Multiply single item price by quality
-        averageOfferPriceSingleItem *= qualityMultiplier;
+        // Target price is adjusted to match quality of player item to create better comparison
+        averageOfferPriceSingleItem *= qualityMiltiplierForPlayerOffer;
 
         // Packs are reduced to the average price of a single item in the pack vs the averaged single price of an item
         var sellChancePercent = ragfairSellHelper.CalculateSellChance(
             averageOfferPriceSingleItem.Value,
             playerListedPriceInRub,
-            qualityMultiplier
+            qualityMiltiplierForPlayerOffer
         );
+
         offer.SellResults = ragfairSellHelper.RollForSale(sellChancePercent, (int)stackCountTotal);
 
         // Subtract flea market fee from stash

@@ -623,6 +623,7 @@
   "ragfair-invalid_player_offer_request": "Unable to place offer, request is invalid",
   "ragfair-item_not_in_db_unable_to_generate_dynamic_stack_count": "Item with tpl: %s not found in db. Unable to generate a dynamic stack count",
   "ragfair-missing_barter_scheme": "generateFleaOffersForTrader() Failed to find barterScheme for item id: {{itemId}} tpl: {{tpl}} on {{name}}",
+  "ragfair-missing_loyal_level_item": "generateFleaOffersForTrader() Failed to find LoyalLevelItem for item id: {{itemId}} tpl: {{tpl}} on {{name}}",
   "ragfair-no_trader_assorts_cant_generate_flea_offers": "Unable to generate flea offers for trader %s, no assort found",
   "ragfair-offer_no_longer_exists": "Offer no longer exists",
   "ragfair-offer_not_found_in_profile": "Could not find offer with id: {{offerId}} in profile: {{profileId}} to remove",

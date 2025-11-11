@@ -953,7 +953,7 @@ public class HideoutController(
 
         // Continuous crafts have special handling in EventOutputHolder.updateOutputProperties()
         hideoutProduction.SptIsComplete = true;
-        hideoutProduction.SptIsContinuous = recipe.Continuous;
+        hideoutProduction.SptIsContinuous = recipe.Continuous ?? false;
 
         // Continuous recipes need the craft time refreshed as it gets created once on initial craft and stays the same regardless of what
         // production.json is set to

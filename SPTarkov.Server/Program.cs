@@ -1,6 +1,5 @@
 using System.Net;
 using System.Net.Sockets;
-using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Security.Authentication;
 using System.Text;
@@ -44,7 +43,9 @@ public static class Program
         catch (Exception e)
         {
             Console.WriteLine("=========================================================================================================");
-            Console.WriteLine("The server has unexpectedly stopped, please check your log files and reach out to #spt-support in discord");
+            Console.WriteLine(
+                "The server has unexpectedly stopped, reach out to #spt-support in discord, create a support thread by following the instructions found in #support-guidelines. Also include a screenshot of this message + the below error"
+            );
             Console.WriteLine(e);
             Console.WriteLine("=========================================================================================================");
             Console.WriteLine("Press any key to exit...");
