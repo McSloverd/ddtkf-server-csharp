@@ -31,7 +31,7 @@ public class ItemBaseClassService(
     public void HydrateItemBaseClassCache()
     {
         // Clear existing cache
-        _itemBaseClassesCache = new Dictionary<MongoId, HashSet<MongoId>>();
+        _itemBaseClassesCache = [];
 
         var items = databaseService.GetItems();
         foreach (var item in items)
@@ -104,7 +104,7 @@ public class ItemBaseClassService(
             // Not found
             if (logger.IsLogEnabled(LogLevel.Debug))
             {
-                logger.Debug(serverLocalisationService.GetText("baseclass-item_not_found", itemTpl));
+                logger.Debug(serverLocalisationService.GetText("baseclass-item_not_found", itemTpl.ToString()));
             }
 
             // Not found in cache, Hydrate again - some mods add items late in server startup lifecycle
@@ -118,7 +118,7 @@ public class ItemBaseClassService(
             return baseClassList.Overlaps(baseClasses);
         }
 
-        logger.Warning(serverLocalisationService.GetText("baseclass-item_not_found_failed", itemTpl));
+        logger.Warning(serverLocalisationService.GetText("baseclass-item_not_found_failed", itemTpl.ToString()));
 
         return false;
     }
@@ -156,7 +156,7 @@ public class ItemBaseClassService(
             // Not found
             if (logger.IsLogEnabled(LogLevel.Debug))
             {
-                logger.Debug(serverLocalisationService.GetText("baseclass-item_not_found", itemTpl));
+                logger.Debug(serverLocalisationService.GetText("baseclass-item_not_found", itemTpl.ToString()));
             }
 
             // Not found in cache, Hydrate again - some mods add items late in server startup lifecycle
@@ -170,7 +170,7 @@ public class ItemBaseClassService(
             return baseClassList.Contains(baseClasses);
         }
 
-        logger.Warning(serverLocalisationService.GetText("baseclass-item_not_found_failed", itemTpl));
+        logger.Warning(serverLocalisationService.GetText("baseclass-item_not_found_failed", itemTpl.ToString()));
 
         return false;
     }
