@@ -389,10 +389,6 @@ public class RagfairPriceService(
     protected double AdjustUnreasonablePrice(UnreasonableModPrices unreasonableItemChange, MongoId itemTpl, double price)
     {
         var itemHandbookPrice = handbookHelper.GetTemplatePrice(itemTpl);
-        if (itemHandbookPrice > 0)
-        {
-            return price;
-        }
 
         // Flea price is over handbook price
         if (price > itemHandbookPrice * unreasonableItemChange.HandbookPriceOverMultiplier)

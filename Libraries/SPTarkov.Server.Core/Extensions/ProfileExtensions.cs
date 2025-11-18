@@ -324,4 +324,14 @@ public static class ProfileExtensions
         // No trader data on player profile, fail check
         return false;
     }
+
+    /// <summary>
+    /// Get Ids of traders with an unlocked status of "false"
+    /// </summary>
+    /// <param name="pmcData">Player profile</param>
+    /// <returns>Hashset of Trader ids</returns>
+    public static HashSet<MongoId> GetLockedTraderIds(this PmcData pmcData)
+    {
+        return pmcData.TradersInfo?.Where(trader => trader.Value.Unlocked == false).Select(t => t.Key).ToHashSet() ?? [];
+    }
 }

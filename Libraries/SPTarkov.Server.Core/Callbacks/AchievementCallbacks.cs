@@ -20,7 +20,7 @@ public class AchievementCallbacks(AchievementController achievementController, H
     }
 
     /// <summary>
-    ///     Handle client/achievement/statistic 
+    ///     Handle client/achievement/statistic
     /// </summary>
     /// <returns></returns>
     public ValueTask<string> Statistic(string url, EmptyRequestData _, MongoId sessionID)

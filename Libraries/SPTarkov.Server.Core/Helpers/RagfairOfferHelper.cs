@@ -237,6 +237,7 @@ public class RagfairOfferHelper(
             ? cloner.Clone(searchRequest.BuildItems.Keys.ToDictionary(key => key, ragfairOfferService.GetOffersOfType))
             : searchRequest.BuildItems.Keys.ToDictionary(key => key, ragfairOfferService.GetOffersOfType);
 
+        var lockedTraders = pmcData.GetLockedTraderIds();
         foreach (var (desiredItemTpl, matchingOffers) in buildItems)
         {
             if (matchingOffers is null)
@@ -266,6 +267,12 @@ public class RagfairOfferHelper(
 
                 if (offer.IsTraderOffer())
                 {
+                    // Player hasn't unlocked trader selling this offer, skip
+                    if (lockedTraders.Contains(offer.User.Id))
+                    {
+                        continue;
+                    }
+
                     if (TraderBuyRestrictionReached(offer))
                     {
                         continue;
