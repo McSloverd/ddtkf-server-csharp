@@ -102,7 +102,9 @@ public class Watermark(
             return $"{versionTag} ({tarkovVersion})";
         }
 
-        return versionTag;
+        //return versionTag;
+        // return sptVersion;
+        return "4.0.4";
     }
 
     /// <summary>

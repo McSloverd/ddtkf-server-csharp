@@ -5,7 +5,7 @@
   "baseclass-item_not_found": "物品基础缓存里找不到物品%s",
   "baseclass-item_not_found_failed": "重新生成后仍未在基础缓存中找到物品 %s",
   "baseclass-missing_db_no_cache": "数据库为空，无法生成物品基础缓存",
-  "bleeding_edge_build": "血色边缘测试版",
+  "bleeding_edge_build": "DDTKF血色边缘极度优化测试版",
   "btr-unable_to_find_items_in_dialog_template": "无法在 dialogueTemplates 中找到向玩家发送的 itemsDelivered 道具信息：%s",
   "bot-bot-cache_has_zero_bots_of_requested_type": "警告 - Bot缓存没有%s种类的预生成bot，该类型需要被生成，请设定bot.json配置属性（presetBatch）以提高数量",
   "bot-bot_preset_count_value_missing": "找不到要为机器人生成的预设数: %s, 默认设值为 30",

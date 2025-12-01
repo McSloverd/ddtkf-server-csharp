@@ -4,6 +4,7 @@ using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Spt.Config;
 using SPTarkov.Server.Core.Servers.Http;
 using SPTarkov.Server.Core.Services;
+using System.Linq;
 
 namespace SPTarkov.Server.Core.Servers;
 
@@ -16,6 +17,7 @@ public class HttpServer(
 )
 {
     protected readonly HttpConfig HttpConfig = configServer.GetConfig<HttpConfig>();
+    private readonly IHttpListener[] _httpListeners = httpListeners as IHttpListener[] ?? httpListeners.ToArray();
 
     public async Task HandleRequest(HttpContext context, RequestDelegate next)
     {
@@ -35,7 +37,7 @@ public class HttpServer(
             profileActivityService.SetActivityTimestamp(sessionId);
         }
 
-        var listener = httpListeners.FirstOrDefault(listener => listener.CanHandle(sessionId, context));
+        var listener = FindListener(sessionId, context);
 
         if (listener != null)
         {
@@ -50,5 +52,18 @@ public class HttpServer(
     public string ListeningUrl()
     {
         return $"https://{HttpConfig.Ip}:{HttpConfig.Port}";
+    }
+
+    private IHttpListener? FindListener(MongoId sessionId, HttpContext context)
+    {
+        for (var i = 0; i < _httpListeners.Length; i++)
+        {
+            var listener = _httpListeners[i];
+            if (listener.CanHandle(sessionId, context))
+            {
+                return listener;
+            }
+        }
+        return null;
     }
 }

@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
+using System.IO.Compression;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.ResponseCaching;
 using MudBlazor.Services;
 using SPTarkov.Server.Core.Models.Spt.Mod;
 using SPTarkov.Server.Web.Components;
@@ -18,6 +21,25 @@ public static class SPTWeb
         builder.WebHost.UseStaticWebAssets();
         builder.Services.AddMudServices();
 
+        builder.Services.AddResponseCaching();
+        builder.Services.Configure<ResponseCachingOptions>(options =>
+        {
+            options.MaximumBodySize = 256 * 1024;
+            options.UseCaseSensitivePaths = false;
+        });
+
+        builder.Services.AddResponseCompression(options =>
+        {
+            options.EnableForHttps = true;
+            options.Providers.Add<BrotliCompressionProvider>();
+            options.Providers.Add<GzipCompressionProvider>();
+            options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                new[] { "application/json", "application/xml", "application/javascript", "application/wasm", "image/svg+xml" }
+            );
+        });
+        builder.Services.Configure<BrotliCompressionProviderOptions>(o => o.Level = CompressionLevel.Fastest);
+        builder.Services.Configure<GzipCompressionProviderOptions>(o => o.Level = CompressionLevel.Fastest);
+
         var mvcBuilder = builder.Services.AddControllers();
 
         foreach (var assembly in SptWebMods.SelectMany(mod => mod.Assemblies))
@@ -33,7 +55,15 @@ public static class SPTWeb
         var logger = app.Services.GetRequiredService<ILogger<App>>();
 
         app.UseAntiforgery();
-        app.UseStaticFiles();
+        app.UseResponseCompression();
+        app.UseResponseCaching();
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            OnPrepareResponse = ctx =>
+            {
+                ctx.Context.Response.Headers.CacheControl = "public,max-age=31536000,immutable";
+            }
+        });
         app.MapControllers();
 
         var razorBuilder = app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
@@ -65,6 +95,10 @@ public static class SPTWeb
                     {
                         FileProvider = new PhysicalFileProvider(Path.Combine(location, "wwwroot")),
                         RequestPath = $"/{modAssembly.GetName().Name}",
+                        OnPrepareResponse = ctx =>
+                        {
+                            ctx.Context.Response.Headers.CacheControl = "public,max-age=31536000,immutable";
+                        }
                     }
                 );
             }

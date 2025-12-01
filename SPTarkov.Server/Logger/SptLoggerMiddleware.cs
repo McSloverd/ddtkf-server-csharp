@@ -4,6 +4,7 @@ using SPTarkov.Server.Core.Models.Spt.Config;
 using SPTarkov.Server.Core.Models.Utils;
 using SPTarkov.Server.Core.Servers;
 using SPTarkov.Server.Core.Services;
+using LogLevel = SPTarkov.Server.Core.Models.Spt.Logging.LogLevel;
 
 namespace SPTarkov.Server.Logger;
 
@@ -55,6 +56,10 @@ public class SptLoggerMiddleware(
     /// <param name="isLocalRequest">Is this local request</param>
     protected void LogRequest(HttpContext context, IPAddress clientIp, bool isLocalRequest, bool isWSRequest)
     {
+        if (!logger.IsLogEnabled(LogLevel.Info))
+        {
+            return;
+        }
         if (isWSRequest)
         {
             if (isLocalRequest)

@@ -141,6 +141,8 @@ public static class Program
 
             await app.Services.GetRequiredService<SptServerStartupService>().Startup();
 
+            ThreadPool.SetMinThreads(Environment.ProcessorCount * 2, Environment.ProcessorCount * 2);
+
             await app.RunAsync();
         }
         catch (Exception ex)
@@ -156,11 +158,13 @@ public static class Program
 
     private static void ConfigureWebApp(WebApplication app)
     {
+        var httpServer = app.Services.GetRequiredService<HttpServer>();
         app.UseWebSockets(
             new WebSocketOptions
             {
                 // Every minute a heartbeat is sent to keep the connection alive.
                 KeepAliveInterval = TimeSpan.FromSeconds(60),
+                ReceiveBufferSize = 64 * 1024,
             }
         );
 
@@ -168,7 +172,7 @@ public static class Program
 
         app.UseNoGCRegions();
 
-        app.Use(async (context, next) => await context.RequestServices.GetRequiredService<HttpServer>().HandleRequest(context, next));
+        app.Use(async (context, next) => await httpServer.HandleRequest(context, next));
 
         app.UseSptBlazor();
     }
@@ -178,6 +182,9 @@ public static class Program
         builder.WebHost.ConfigureKestrel(
             (_, options) =>
             {
+                options.AddServerHeader = false;
+                options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(2);
+                options.Limits.RequestHeadersTimeout = TimeSpan.FromSeconds(30);
                 // This method is not expected to be async so we need to wait for the Task instead of using await keyword
                 options.ApplicationServices.GetRequiredService<OnWebAppBuildModLoader>().OnLoad().Wait();
                 var httpConfig = options.ApplicationServices.GetRequiredService<ConfigServer>().GetConfig<HttpConfig>();
@@ -226,6 +233,11 @@ public static class Program
     private static List<SptMod> ValidateMods(IEnumerable<SptMod> mods)
     {
         if (!ProgramStatics.MODS())
+        {
+            return [];
+        }
+
+        if (!mods.Any())
         {
             return [];
         }
@@ -280,7 +292,11 @@ public static class Program
         var dirFiles = Directory.GetFiles(Directory.GetCurrentDirectory());
 
         // This file is guaranteed to exist if ran from the correct location, even if the game does not exist here.
-        return dirFiles.Any(dirFile => dirFile.EndsWith("sptLogger.json") || dirFile.EndsWith("sptLogger.Development.json"));
+        return dirFiles.Any(
+            dirFile =>
+                dirFile.EndsWith("sptLogger.json", StringComparison.OrdinalIgnoreCase)
+                || dirFile.EndsWith("sptLogger.Development.json", StringComparison.OrdinalIgnoreCase)
+        );
     }
 
     [DllImport("kernel32.dll", SetLastError = true)]
